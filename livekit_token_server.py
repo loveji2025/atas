@@ -27,9 +27,12 @@ def get_token(identity: str = "testuser", room: str = "testroom"):
             return JSONResponse({"error": "LIVEKIT_API_SECRET not set or using placeholder"}, status_code=500)
 
         # AccessToken generate
-        token = AccessToken(LIVEKIT_API_KEY, LIVEKIT_API_SECRET)
-        token.identity = identity
-        token.add_grant(VideoGrants(room_join=True, room=room))
+        token = AccessToken(LIVEKIT_API_KEY, LIVEKIT_API_SECRET) \
+            .with_identity(identity) \
+            .with_grants(VideoGrants(
+                room_join=True,
+                room=room,
+            ))
         jwt = token.to_jwt()
 
         return JSONResponse({"token": jwt})
