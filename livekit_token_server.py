@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
-from livekit import api
+from livekit.api import AccessToken, VideoGrant
 import os
 from dotenv import load_dotenv
 
@@ -27,9 +27,10 @@ def get_token(identity: str = "testuser", room: str = "testroom"):
             return JSONResponse({"error": "LIVEKIT_API_SECRET not set or using placeholder"}, status_code=500)
 
         # AccessToken generate
-        token = api.AccessToken(LIVEKIT_API_KEY, LIVEKIT_API_SECRET)
+        token = AccessToken(LIVEKIT_API_KEY, LIVEKIT_API_SECRET)
         token.identity = identity
-        token.add_grant(api.VideoGrants(room_join=True, room=room))
+        grant = VideoGrant(room_join=True, room=room)
+        token.add_grant(grant)
         jwt = token.to_jwt()
 
         return JSONResponse({"token": jwt})

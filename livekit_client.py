@@ -6,7 +6,7 @@ from livekit import rtc
 LIVEKIT_URL = "wss://atas-voice-assistant-k72sqixb.livekit.cloud"
 
 # ==== Tumhara Render token server endpoint ====
-TOKEN_SERVER_URL = "http://localhost:8001/get_token"
+TOKEN_SERVER_URL = "https://atas-nk8c.onrender.com/get_token"
 
 async def connect_to_livekit():
     room = rtc.Room()
