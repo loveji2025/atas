@@ -38,5 +38,10 @@ def get_token():
     token = create_livekit_token(LIVEKIT_API_KEY, LIVEKIT_API_SECRET, identity, room)
     return jsonify({"token": token})
 
+# Homepage route
+@app.route("/", methods=["GET"])
+def home():
+    return "LiveKit Token Server is running!", 200
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
