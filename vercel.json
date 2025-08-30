@@ -1,8 +1,0 @@
-{
-  "builds": [
-    { "src": "livekit_token_server.py", "use": "@vercel/python" }
-  ],
-  "routes": [
-    { "src": "/(.*)", "dest": "livekit_token_server.py" }
-  ]
-}

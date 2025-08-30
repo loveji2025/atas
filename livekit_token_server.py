@@ -1,12 +1,10 @@
 import os
-from dotenv import load_dotenv
-load_dotenv(dotenv_path="c:/Users/rahul/OneDrive/Desktop/atas/.env")
-
-print("API KEY:", os.environ.get("LIVEKIT_API_KEY"))
-print("API SECRET:", os.environ.get("LIVEKIT_API_SECRET"))
 import time
 import jwt
 from flask import Flask, request, jsonify
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 
