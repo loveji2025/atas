@@ -22,7 +22,7 @@ async def connect_to_livekit():
         return
 
     # 2. Callback jab connect ho jaye
-    async def on_connected():
+    def on_connected():
         print("✅ Connected to LiveKit room!")
 
     room.on("connected", on_connected)
