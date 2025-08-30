@@ -27,7 +27,8 @@ def get_token(identity: str = "testuser", room: str = "testroom"):
             return JSONResponse({"error": "LIVEKIT_API_SECRET not set or using placeholder"}, status_code=500)
 
         # AccessToken generate
-        token = api.AccessToken(LIVEKIT_API_KEY, LIVEKIT_API_SECRET, identity=identity)
+        token = api.AccessToken(LIVEKIT_API_KEY, LIVEKIT_API_SECRET)
+        token.identity = identity
         token.add_grant(api.VideoGrants(room_join=True, room=room))
         jwt = token.to_jwt()
 
@@ -38,4 +39,4 @@ def get_token(identity: str = "testuser", room: str = "testroom"):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8001)
