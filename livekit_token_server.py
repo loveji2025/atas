@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
-from livekit.api import AccessToken, VideoGrant
+from livekit import AccessToken, VideoGrants
 import os
 from dotenv import load_dotenv
 
@@ -29,8 +29,7 @@ def get_token(identity: str = "testuser", room: str = "testroom"):
         # AccessToken generate
         token = AccessToken(LIVEKIT_API_KEY, LIVEKIT_API_SECRET)
         token.identity = identity
-        grant = VideoGrant(room_join=True, room=room)
-        token.add_grant(grant)
+        token.addGrant(VideoGrants(room_join=True, room=room))
         jwt = token.to_jwt()
 
         return JSONResponse({"token": jwt})
