@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
-from livekit import AccessToken, VideoGrants
+from livekit.api import AccessToken, VideoGrants
 import os
 from dotenv import load_dotenv
 
