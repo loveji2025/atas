@@ -1,1 +1,1 @@
-web: python livekit_token_server.py
+web: uvicorn livekit_token_server:app --host 0.0.0.0 --port $PORT

@@ -1,3 +1,4 @@
+livekit
 livekit-agents
 livekit-plugins-openai
 livekit-plugins-silero
@@ -12,3 +13,5 @@ langdetect
 googletrans
 ddgs
 Flask
+fastapi
+uvicorn
