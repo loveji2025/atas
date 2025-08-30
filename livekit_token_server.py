@@ -29,7 +29,7 @@ def get_token(identity: str = "testuser", room: str = "testroom"):
         # AccessToken generate
         token = AccessToken(LIVEKIT_API_KEY, LIVEKIT_API_SECRET)
         token.identity = identity
-        token.addGrant(VideoGrants(room_join=True, room=room))
+        token.add_grant(VideoGrants(room_join=True, room=room))
         jwt = token.to_jwt()
 
         return JSONResponse({"token": jwt})
